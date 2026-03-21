@@ -1,18 +1,17 @@
 {
   "name": "bear-links-app",
   "version": "1.0.0",
-  "description": "Premium links page for Bear Media",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "lint": "next lint"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "next": "^14.0.0",
-    "lucide-react": "^0.263.1"
+    "next": "^14.0.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.0",
