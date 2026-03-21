@@ -55,9 +55,12 @@
     <!-- Main content -->
     <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-12">
         
-        <!-- Header -->
-        <div class="mb-16 text-center fade-in-up">
-            <h1 class="text-5xl md:text-6xl font-bold mb-3 tracking-tight">
+        {/* Header */}
+        <div className={`mb-16 text-center transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+          <div className="mb-6">
+            <img src="https://raw.githubusercontent.com/glynch70/bear-links-app/main/logo.png" alt="Bear Media" className="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight">
                 Bear Media
             </h1>
             <div class="h-1 w-20 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full mb-6"></div>
