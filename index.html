@@ -30,23 +30,63 @@
             animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
-        .link-item {
-            transition: all 0.2s ease;
-        }
-
-        .link-item:active {
-            transform: scale(0.98);
-        }
-
         body {
             background: linear-gradient(135deg, #030712 0%, #0f172a 50%, #000000 100%);
             min-height: 100vh;
         }
 
-        /* Mobile touch targets */
+        /* Flip container styles */
+        .flip-link {
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-inner {
+            position: relative;
+            width: 100%;
+            height: 2.5rem;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+        }
+
+        .flip-link:hover .flip-inner {
+            transform: rotateX(90deg);
+        }
+
+        .flip-front, .flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            backface-visibility: hidden;
+        }
+
+        .flip-front {
+            color: white;
+            z-index: 1;
+        }
+
+        .flip-back {
+            color: #fbbf24;
+            transform: rotateX(90deg);
+        }
+
+        .flip-link:last-of-type .flip-back {
+            color: #fbbf24;
+        }
+
         @media (max-width: 640px) {
-            .link-item {
-                min-height: 60px;
+            .flip-inner {
+                height: 2rem;
+            }
+            .flip-front, .flip-back {
+                font-size: 1.25rem;
             }
         }
     </style>
@@ -63,119 +103,92 @@
     <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-6 sm:py-12">
         
         <!-- Header with Logo -->
-        <div class="mb-8 text-center fade-in-up w-full">
+        <div class="mb-12 text-center fade-in-up w-full">
             <!-- Logo -->
-            <div class="mb-4">
+            <div class="mb-6">
                 <img src="logo.png" alt="Bear Media" class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full shadow-2xl object-cover border-2 border-amber-500/20">
             </div>
             <h1 class="text-3xl sm:text-4xl font-bold mb-2 tracking-tight">
                 Bear Media
             </h1>
-            <div class="h-1 w-14 bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 mx-auto rounded-full mb-3"></div>
-            <p class="text-gray-400 text-xs sm:text-sm font-light max-w-sm">Creative services • Web • Video • Photography • AI</p>
+            <div class="h-1 w-14 bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 mx-auto rounded-full mb-4"></div>
+            <p class="text-gray-400 text-xs sm:text-sm font-light max-w-sm mx-auto">Content Creator • Web Design</p>
         </div>
 
-        <!-- Links container with Flip Animation -->
-        <div class="w-full flex flex-col items-center space-y-1 mb-8">
+        <!-- Links container -->
+        <div class="w-full flex flex-col items-center space-y-4 mb-8 max-w-sm">
             
-            <!-- Instagram - Flip Link -->
-            <a href="https://www.instagram.com/bearmedia70/" target="_blank" rel="noopener noreferrer" class="group link-item block relative overflow-hidden">
-                <div class="text-2xl sm:text-4xl font-black uppercase tracking-tighter h-10 sm:h-16 text-center">
-                    <div class="flex justify-center">
-                        I<span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 25ms;">n</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 50ms;">s</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 75ms;">t</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 100ms;">a</span>
-                    </div>
-                    <div class="absolute inset-0 flex justify-center translate-y-full transition-transform duration-300 ease-in-out group-active:translate-y-0">
-                        I<span style="transition-delay: 25ms;">n</span><span style="transition-delay: 50ms;">s</span><span style="transition-delay: 75ms;">t</span><span style="transition-delay: 100ms;">a</span>
-                    </div>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/bearmedia70/" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
+                <div class="flip-inner">
+                    <div class="flip-front">Instagram</div>
+                    <div class="flip-back">Instagram</div>
                 </div>
             </a>
 
-            <!-- TikTok - Flip Link -->
-            <a href="https://www.tiktok.com/@bearmediascotland" target="_blank" rel="noopener noreferrer" class="group link-item block relative overflow-hidden">
-                <div class="text-2xl sm:text-4xl font-black uppercase tracking-tighter h-10 sm:h-16 text-center">
-                    <div class="flex justify-center">
-                        T<span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 25ms;">i</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 50ms;">k</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 75ms;">T</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 100ms;">o</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 125ms;">k</span>
-                    </div>
-                    <div class="absolute inset-0 flex justify-center translate-y-full transition-transform duration-300 ease-in-out group-active:translate-y-0">
-                        T<span style="transition-delay: 25ms;">i</span><span style="transition-delay: 50ms;">k</span><span style="transition-delay: 75ms;">T</span><span style="transition-delay: 100ms;">o</span><span style="transition-delay: 125ms;">k</span>
-                    </div>
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@bearmediascotland" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
+                <div class="flip-inner">
+                    <div class="flip-front">TikTok</div>
+                    <div class="flip-back">TikTok</div>
                 </div>
             </a>
 
-            <!-- YouTube - Flip Link -->
-            <a href="https://www.youtube.com/@bearmedia70" target="_blank" rel="noopener noreferrer" class="group link-item block relative overflow-hidden">
-                <div class="text-2xl sm:text-4xl font-black uppercase tracking-tighter h-10 sm:h-16 text-center">
-                    <div class="flex justify-center">
-                        Y<span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 25ms;">o</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 50ms;">u</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 75ms;">T</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 100ms;">u</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 125ms;">b</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 150ms;">e</span>
-                    </div>
-                    <div class="absolute inset-0 flex justify-center translate-y-full transition-transform duration-300 ease-in-out group-active:translate-y-0">
-                        Y<span style="transition-delay: 25ms;">o</span><span style="transition-delay: 50ms;">u</span><span style="transition-delay: 75ms;">T</span><span style="transition-delay: 100ms;">u</span><span style="transition-delay: 125ms;">b</span><span style="transition-delay: 150ms;">e</span>
-                    </div>
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@bearmedia70" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
+                <div class="flip-inner">
+                    <div class="flip-front">YouTube</div>
+                    <div class="flip-back">YouTube</div>
                 </div>
             </a>
 
-            <!-- LinkedIn - Flip Link -->
-            <a href="https://www.linkedin.com/in/garrylynch70/" target="_blank" rel="noopener noreferrer" class="group link-item block relative overflow-hidden">
-                <div class="text-2xl sm:text-4xl font-black uppercase tracking-tighter h-10 sm:h-16 text-center">
-                    <div class="flex justify-center">
-                        L<span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 25ms;">i</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 50ms;">n</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 75ms;">k</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 100ms;">e</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 125ms;">d</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 150ms;">I</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 175ms;">n</span>
-                    </div>
-                    <div class="absolute inset-0 flex justify-center translate-y-full transition-transform duration-300 ease-in-out group-active:translate-y-0">
-                        L<span style="transition-delay: 25ms;">i</span><span style="transition-delay: 50ms;">n</span><span style="transition-delay: 75ms;">k</span><span style="transition-delay: 100ms;">e</span><span style="transition-delay: 125ms;">d</span><span style="transition-delay: 150ms;">I</span><span style="transition-delay: 175ms;">n</span>
-                    </div>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/garrylynch70/" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
+                <div class="flip-inner">
+                    <div class="flip-front">LinkedIn</div>
+                    <div class="flip-back">LinkedIn</div>
                 </div>
             </a>
 
-            <!-- Facebook - Flip Link -->
-            <a href="https://www.facebook.com/profile.php?id=61553562716650" target="_blank" rel="noopener noreferrer" class="group link-item block relative overflow-hidden">
-                <div class="text-2xl sm:text-4xl font-black uppercase tracking-tighter h-10 sm:h-16 text-center">
-                    <div class="flex justify-center">
-                        F<span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 25ms;">a</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 50ms;">c</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 75ms;">e</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 100ms;">b</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 125ms;">o</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 150ms;">o</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 175ms;">k</span>
-                    </div>
-                    <div class="absolute inset-0 flex justify-center translate-y-full transition-transform duration-300 ease-in-out group-active:translate-y-0">
-                        F<span style="transition-delay: 25ms;">a</span><span style="transition-delay: 50ms;">c</span><span style="transition-delay: 75ms;">e</span><span style="transition-delay: 100ms;">b</span><span style="transition-delay: 125ms;">o</span><span style="transition-delay: 150ms;">o</span><span style="transition-delay: 175ms;">k</span>
-                    </div>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/profile.php?id=61553562716650" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
+                <div class="flip-inner">
+                    <div class="flip-front">Facebook</div>
+                    <div class="flip-back">Facebook</div>
                 </div>
             </a>
 
-            <!-- Website - Flip Link -->
-            <a href="https://bear-media.com/" target="_blank" rel="noopener noreferrer" class="group link-item block relative overflow-hidden">
-                <div class="text-2xl sm:text-4xl font-black uppercase tracking-tighter h-10 sm:h-16 text-center">
-                    <div class="flex justify-center">
-                        W<span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 25ms;">e</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 50ms;">b</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 75ms;">s</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 100ms;">i</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 125ms;">t</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 150ms;">e</span>
-                    </div>
-                    <div class="absolute inset-0 flex justify-center translate-y-full transition-transform duration-300 ease-in-out group-active:translate-y-0">
-                        W<span style="transition-delay: 25ms;">e</span><span style="transition-delay: 50ms;">b</span><span style="transition-delay: 75ms;">s</span><span style="transition-delay: 100ms;">i</span><span style="transition-delay: 125ms;">t</span><span style="transition-delay: 150ms;">e</span>
-                    </div>
+            <!-- Website -->
+            <a href="https://bear-media.com/" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
+                <div class="flip-inner">
+                    <div class="flip-front">Website</div>
+                    <div class="flip-back">Website</div>
                 </div>
             </a>
 
-            <!-- Discovery Call - Flip Link CTA -->
-            <a href="https://calendly.com/bearmedia/discovery-call" target="_blank" rel="noopener noreferrer" class="group link-item block relative overflow-hidden mt-6">
-                <div class="text-2xl sm:text-4xl font-black uppercase tracking-tighter h-10 sm:h-16 text-amber-400 text-center">
-                    <div class="flex justify-center">
-                        D<span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 25ms;">i</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 50ms;">s</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 75ms;">c</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 100ms;">o</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 125ms;">v</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 150ms;">e</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 175ms;">r</span><span class="inline-block transition-transform duration-300 ease-in-out group-active:-translate-y-full" style="transition-delay: 200ms;">y</span>
-                    </div>
-                    <div class="absolute inset-0 flex justify-center translate-y-full transition-transform duration-300 ease-in-out group-active:translate-y-0">
-                        D<span style="transition-delay: 25ms;">i</span><span style="transition-delay: 50ms;">s</span><span style="transition-delay: 75ms;">c</span><span style="transition-delay: 100ms;">o</span><span style="transition-delay: 125ms;">v</span><span style="transition-delay: 150ms;">e</span><span style="transition-delay: 175ms;">r</span><span style="transition-delay: 200ms;">y</span>
-                    </div>
+            <!-- Discovery Call -->
+            <a href="https://calendly.com/bearmedia/discovery-call" target="_blank" rel="noopener noreferrer" class="flip-link w-full mt-4">
+                <div class="flip-inner">
+                    <div class="flip-front text-amber-400">Discovery Call</div>
+                    <div class="flip-back">Discovery Call</div>
                 </div>
             </a>
 
         </div>
 
         <!-- Footer -->
-        <div class="text-center text-gray-500 text-xs mt-6">
+        <div class="text-center text-gray-500 text-xs mt-8 w-full">
             <p>© 2026 Bear Media</p>
         </div>
     </div>
 
     <script>
-        // Stagger animations on load
-        const items = document.querySelectorAll('.link-item');
-        items.forEach((item, index) => {
-            item.style.animationDelay = `${0.04 + (index * 0.06)}s`;
-            item.classList.add('fade-in-up');
+        // Stagger fade-in animations
+        const links = document.querySelectorAll('.flip-link');
+        links.forEach((link, index) => {
+            link.style.opacity = '0';
+            link.style.animation = `fadeInUp 0.6s ease-out forwards`;
+            link.style.animationDelay = `${0.1 + (index * 0.08)}s`;
         });
     </script>
 </body>
