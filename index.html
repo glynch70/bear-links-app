@@ -1,203 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bear Media - Links</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#0f172a">
+    <title>Bear Media | Property Marketing, Content Creation &amp; Web Design</title>
+    <meta name="description" content="Photography, video, drone and digital content for businesses across Scotland. Explore Bear Media’s work, property marketing and web design, or get a quote.">
+    <link rel="canonical" href="https://links.bear-media.com/">
     <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 0.08; }
-            50% { opacity: 0.15; }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .pulse-slow {
-            animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        body {
-            background: linear-gradient(135deg, #030712 0%, #0f172a 50%, #000000 100%);
-            min-height: 100vh;
-        }
-
-        /* Flip container styles */
-        .flip-link {
-            perspective: 1000px;
-            cursor: pointer;
-        }
-
-        .flip-inner {
-            position: relative;
-            width: 100%;
-            height: 2.5rem;
-            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-style: preserve-3d;
-        }
-
-        .flip-link:hover .flip-inner {
-            transform: rotateX(90deg);
-        }
-
-        .flip-front, .flip-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-            backface-visibility: hidden;
-        }
-
-        .flip-front {
-            color: white;
-            z-index: 1;
-        }
-
-        .flip-back {
-            color: #fbbf24;
-            transform: rotateX(90deg);
-        }
-
-        .flip-link:last-of-type .flip-back {
-            color: #fbbf24;
-        }
-
-        @media (max-width: 640px) {
-            .flip-inner {
-                height: 2rem;
-            }
-            .flip-front, .flip-back {
-                font-size: 1.25rem;
-            }
-        }
+        :root { color-scheme: dark; --navy: #0f172a; --gold: #fbbf24; --white: #f8fafc; --muted: #b6c2d4; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #080f1e; color: var(--white); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; }
+        main { width: min(100%, 512px); margin: 0 auto; padding: 24px 20px 28px; }
+        header { text-align: center; margin-bottom: 22px; }
+        .logo { display: block; width: 80px; height: 80px; margin: 0 auto 12px; border-radius: 50%; border: 1px solid #fbbf2450; object-fit: cover; }
+        h1 { margin: 0 0 6px; font-size: 30px; line-height: 1.15; letter-spacing: -.035em; }
+        .subtitle { margin: 0 auto 10px; color: var(--gold); font-size: 13px; font-weight: 600; }
+        .intro { max-width: 350px; margin: 0 auto; font-size: 14px; color: var(--muted); }
+        a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: #fbbf2433; }
+        a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+        .primary { display: grid; gap: 10px; }
+        .card { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 14px 16px; border: 1px solid #334155; border-radius: 14px; background: var(--navy); font-size: 15px; font-weight: 600; transition: border-color .15s, background-color .15s, transform .15s; }
+        .icon { width: 24px; flex-shrink: 0; text-align: center; font-size: 19px; }
+        .arrow { margin-left: auto; color: var(--muted); font-size: 18px; }
+        .quote { background: var(--gold); border-color: var(--gold); color: #0f172a; font-weight: 750; }
+        .quote .arrow { color: #0f172a; }
+        .socials { margin-top: 26px; padding-top: 20px; border-top: 1px solid #334155; }
+        h2 { margin: 0 0 12px; color: var(--muted); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; text-align: center; }
+        .social-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+        .social { display: flex; align-items: center; justify-content: center; min-height: 44px; border: 1px solid #334155; border-radius: 10px; font-size: 13px; transition: border-color .15s, background-color .15s; }
+        .youtube { grid-column: 1 / -1; }
+        footer { margin-top: 24px; text-align: center; font-size: 12px; color: var(--muted); }
+        footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
+        footer p { margin: 4px 0 0; }
+        @media (hover: hover) { .card:hover, .social:hover { border-color: var(--gold); background: #1e293b; } .quote:hover { background: #fcd34d; } }
+        .card:active { transform: scale(.99); }
+        @media (min-width: 640px) { main { padding-top: 40px; padding-bottom: 40px; } .logo { width: 96px; height: 96px; } h1 { font-size: 34px; } .subtitle { font-size: 14px; } }
+        @media (prefers-reduced-motion: reduce) { .card, .social { transition: none; } .card:active { transform: none; } }
     </style>
 </head>
-<body class="text-white">
-    <!-- Animated background blobs -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pulse-slow"></div>
-        <div class="absolute top-1/2 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pulse-slow" style="animation-delay: 1s;"></div>
-        <div class="absolute -bottom-40 right-1/3 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pulse-slow" style="animation-delay: 2s;"></div>
-    </div>
-
-    <!-- Main content -->
-    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-6 sm:py-12">
-        
-        <!-- Header with Logo -->
-        <div class="mb-12 text-center fade-in-up w-full">
-            <!-- Logo -->
-            <div class="mb-6">
-                <img src="logo.png" alt="Bear Media" class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full shadow-2xl object-cover border-2 border-amber-500/20">
-            </div>
-            <h1 class="text-3xl sm:text-4xl font-bold mb-2 tracking-tight">
-                Bear Media
-            </h1>
-            <div class="h-1 w-14 bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 mx-auto rounded-full mb-4"></div>
-            <p class="text-gray-400 text-xs sm:text-sm font-light max-w-sm mx-auto">Content Creator • Web Design</p>
-        </div>
-
-        <!-- Links container -->
-        <div class="w-full flex flex-col items-center space-y-4 mb-8 max-w-sm">
-            
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/bearmedia70/" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
-                <div class="flip-inner">
-                    <div class="flip-front">Instagram</div>
-                    <div class="flip-back">Instagram</div>
-                </div>
-            </a>
-
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@bearmediascotland" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
-                <div class="flip-inner">
-                    <div class="flip-front">TikTok</div>
-                    <div class="flip-back">TikTok</div>
-                </div>
-            </a>
-
-            <!-- YouTube -->
-            <a href="https://www.youtube.com/@bearmedia70" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
-                <div class="flip-inner">
-                    <div class="flip-front">YouTube</div>
-                    <div class="flip-back">YouTube</div>
-                </div>
-            </a>
-
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/garrylynch70/" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
-                <div class="flip-inner">
-                    <div class="flip-front">LinkedIn</div>
-                    <div class="flip-back">LinkedIn</div>
-                </div>
-            </a>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/profile.php?id=61553562716650" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
-                <div class="flip-inner">
-                    <div class="flip-front">Facebook</div>
-                    <div class="flip-back">Facebook</div>
-                </div>
-            </a>
-
-            <!-- Website -->
-            <a href="https://bear-media.com/" target="_blank" rel="noopener noreferrer" class="flip-link w-full">
-                <div class="flip-inner">
-                    <div class="flip-front">Website</div>
-                    <div class="flip-back">Website</div>
-                </div>
-            </a>
-
-            <!-- Email -->
-            <a href="mailto:info@bear-media.com" class="flip-link w-full">
-                <div class="flip-inner">
-                    <div class="flip-front">Email</div>
-                    <div class="flip-back">Email</div>
-                </div>
-            </a>
-
-            <!-- Discovery Call -->
-            <a href="https://calendly.com/bearmedia/discovery-call" target="_blank" rel="noopener noreferrer" class="flip-link w-full mt-4">
-                <div class="flip-inner">
-                    <div class="flip-front text-amber-400">Discovery Call</div>
-                    <div class="flip-back">Discovery Call</div>
-                </div>
-            </a>
-
-        </div>
-
-        <!-- Footer -->
-        <div class="text-center text-gray-500 text-xs mt-8 w-full">
+<body>
+    <main>
+        <header>
+            <img class="logo" src="logo.png" alt="Bear Media logo" width="80" height="80">
+            <h1>Bear Media</h1>
+            <p class="subtitle">Property Marketing · Content Creation · Web Design</p>
+            <p class="intro">Photography, video, drone and digital content for businesses across Scotland.</p>
+        </header>
+        <nav class="primary" aria-label="Work, services and enquiries">
+            <a class="card" href="https://www.bear-media.com/projects" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true">📸</span><span>View My Work</span><span class="arrow" aria-hidden="true">↗︎</span></a>
+            <a class="card" href="https://www.bear-media.com/property" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true">🏡</span><span>Property Photography &amp; Video</span><span class="arrow" aria-hidden="true">↗︎</span></a>
+            <a class="card quote" href="https://www.bear-media.com/contact" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true">💬</span><span>Get a Quote</span><span class="arrow" aria-hidden="true">↗︎</span></a>
+            <a class="card" href="https://www.bear-media.com" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true">🌐</span><span>Visit My Website</span><span class="arrow" aria-hidden="true">↗︎</span></a>
+            <a class="card" href="https://calendly.com/bearmedia/discovery-call" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true">📅</span><span>Book a Discovery Call</span><span class="arrow" aria-hidden="true">↗︎</span></a>
+        </nav>
+        <section class="socials" aria-labelledby="social-heading">
+            <h2 id="social-heading">More from Bear Media</h2>
+            <nav class="social-grid" aria-label="Social links">
+                <a class="social youtube" href="https://www.youtube.com/@bearmedia70" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🎬&nbsp;</span> YouTube Portfolio</a>
+                <a class="social" href="https://www.instagram.com/bearmedia70/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a class="social" href="https://www.tiktok.com/@bearmediascotland" target="_blank" rel="noopener noreferrer">TikTok</a>
+                <a class="social" href="https://www.linkedin.com/in/garrylynch70/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="social" href="https://www.facebook.com/profile.php?id=61553562716650" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </nav>
+        </section>
+        <footer>
+            <a href="mailto:info@bear-media.com">info@bear-media.com</a>
             <p>© 2026 Bear Media</p>
-        </div>
-    </div>
-
-    <script>
-        // Stagger fade-in animations
-        const links = document.querySelectorAll('.flip-link');
-        links.forEach((link, index) => {
-            link.style.opacity = '0';
-            link.style.animation = `fadeInUp 0.6s ease-out forwards`;
-            link.style.animationDelay = `${0.1 + (index * 0.08)}s`;
-        });
-    </script>
+        </footer>
+    </main>
 </body>
 </html>
